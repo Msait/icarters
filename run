@@ -1,0 +1,18 @@
+#! /bin/bash
+
+case $1 in
+ jenkins)
+   docker run --name jen --rm  -p 9090:8080 jenkins
+   #docker run --name jen --rm  -v $(pwd)/provision/jenkins:/var/jenkins_home -p 8080:9090 jenkins
+ ;;
+ tomcat)
+   docker run --name tom -it -v :/usr/local/tomcat/webapps --rm bondar/tomcat
+  ;;
+ init)
+   docker pull postgres
+
+   docker pull jenkins
+
+   # docker build -t bondar/jenkins provision/jenkins
+   docker build -t bondar/tomcat provision/tomcat
+esac
