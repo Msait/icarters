@@ -6,13 +6,13 @@ case $1 in
    #docker run --name jen --rm  -v $(pwd)/provision/jenkins:/var/jenkins_home -p 8080:9090 jenkins
  ;;
  tomcat)
-   docker run --name tom -it -v :/usr/local/tomcat/webapps --rm bondar/tomcat
+   docker run --name tom -it -p 8080:8080 --rm bondar/tomcat
+   #docker run --name tom -it -v $(pwd)/provision/tomcat:/usr/local/tomcat/webapps --rm bondar/tomcat
   ;;
  init)
    docker pull postgres
-
    docker pull jenkins
-
    # docker build -t bondar/jenkins provision/jenkins
    docker build -t bondar/tomcat provision/tomcat
+  ;;
 esac
