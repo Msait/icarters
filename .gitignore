@@ -3,6 +3,9 @@
 /.idea/**
 /target/**
 /provision/jenkins/.java/**
+.vagrant/
+/icarters-common/target/
+/icarters-webapp/target/
 /provision/jenkins/.jenkins/**
 /provision/jenkins/.m2/**
 /provision/jenkins/.oracle_jre_usage/**

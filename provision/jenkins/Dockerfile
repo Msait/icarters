@@ -1,16 +1,12 @@
 FROM jenkins
 
-# Modify the UID of the jenkins user to automatically match the mounted volume.
-# Use it just like the original: https://hub.docker.com/_/jenkins/
+MAINTAINER Kostiantyn Bondar
 
 USER root
+RUN mkdir /var/log/jenkins
+RUN chown -R jenkins:jenkins /var/log/jenkins
+RUN chmod -R 666 /var/jenkins_home
+USER jenkins
 
-# Grab gosu for easy step-down from root.
-ADD https://github.com/tianon/gosu/releases/download/1.5/gosu-amd64 /usr/local/bin/gosu
-
-# Change the group of the jenkins user to root, because that group has no 
-# special rights on most host systems.
-RUN chmod 755 /usr/local/bin/gosu && usermod -g root jenkins
-
-ENTRYPOINT usermod -u $(stat -c "%u" /var/jenkins_home) jenkins && \
-        gosu jenkins /bin/tini -- /usr/local/bin/jenkins.sh
+ENV JAVA_OPTS="-Xmx8192m"
+ENV JENKINS_OPTS="--handlerCountStartup=100 --handlerCountMax=300 --logfile=/var/log/jenkins/jenkins.log"
