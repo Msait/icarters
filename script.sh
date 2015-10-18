@@ -28,4 +28,7 @@ cp -f -r /vagrant/home/provision/jenkins/jobs /var/lib/jenkins/jobs
 cp -f -r /vagrant/home/provision/jenkins/plugins /var/lib/jenkins/jobs/plugins
 cp -f -r /vagrant/home/provision/jenkins/userContent /var/lib/jenkins/jobs/userContent
 
+# enable autostart docker
+systemctl enable docker
+
 service jenkins restart

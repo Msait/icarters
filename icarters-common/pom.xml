@@ -15,5 +15,13 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    
+    <dependencies>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+
 </project>

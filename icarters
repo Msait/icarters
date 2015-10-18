@@ -1,0 +1,16 @@
+#! /bin/bash
+
+case $1 in
+ jenkins)
+   vagrant sh -c '/vagrant/home/run jenkins'
+ ;;
+ tomcat)
+   vagrant sh -c '/vagrant/home/run tomcat'
+  ;;
+ tom)
+   vagrant sh -c '/vagrant/home/run tom'
+  ;;
+ pg)
+   vagrant sh -c '/vagrant/home/run pg'
+  ;;
+ esac

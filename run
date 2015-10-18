@@ -7,8 +7,20 @@ case $1 in
    docker run --name jen --rm -p 9090:8080 bondar/jenkins
  ;;
  tomcat)
-   docker run --name tom -it -p 8080:8080 --rm bondar/tomcat
+  docker ps -a | grep 'tomcat-jenkins' | awk '{print $1}' | xargs --no-run-if-empty docker rm -f && docker run --name tomcat-jenkins -it -p 8888:8080 -d bondar/tomcat
    #docker run --name tom -it -v $(pwd)/provision/tomcat:/usr/local/tomcat/webapps --rm bondar/tomcat
+  ;;
+ tom)
+   docker ps -a | grep 'tomcat-local' | awk '{print $1}' | xargs --no-run-if-empty docker rm -f && docker run --name tom-local -it -p 8080:8080 --rm bondar/tomcat
+  ;;
+ pg)
+   docker ps -a | grep 'postgres' | awk '{print $1}' | xargs --no-run-if-empty docker rm -f \
+   && docker run --name postgres -dit -p 5432:5432 -e POSTGRES_PASSWORD=icarters \
+   -v $(pwd)/provision/postgres/data:/var/lib/postgresql/data \
+   postgres
+   
+   echo "CREATE NEW DATABASE icarters IF IT DOESN`T EXIST in 5 secods..."
+   sleep 5 && docker exec -it $(docker ps -a | grep 'postgres' | awk '{print $1}') psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE icarters WITH ENCODING='UTF8' OWNER=postgres CONNECTION LIMIT=-1;"
   ;;
  init)
    docker pull postgres

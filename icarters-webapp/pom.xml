@@ -6,7 +6,7 @@
 <groupId>com.icarters</groupId>
 <artifactId>icarters-webapp</artifactId>
 <version>1.0</version>
-<packaging>war</packaging>
+<packaging>jar</packaging>
 
 <name>icarters</name>
 <description>Icarters shop web module</description>

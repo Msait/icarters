@@ -2,7 +2,9 @@ Vagrant.configure(2) do |config|
 
 	config.vm.box = "ubuntu/vivid64"
 	config.vm.network "forwarded_port", guest: 9090, host: 9090
-	config.vm.network "forwarded_port", guest: 8080, host: 8080
+	config.vm.network "forwarded_port", guest: 8080, host: 8081	# for local development
+	config.vm.network "forwarded_port", guest: 8888, host: 8888 # for testing
+	config.vm.network "forwarded_port", guest: 5432, host: 5432 # for postgres
 	config.vm.network "forwarded_port", guest: 55555, host: 55555 # jenkins port
 
 	config.vm.synced_folder ".", "/vagrant/home"
