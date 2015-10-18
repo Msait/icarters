@@ -32,3 +32,4 @@
 /provision/jenkins/userContent/**
 /provision/jenkins/war/**
 /provision/jenkins/workspace/**
+data/**
