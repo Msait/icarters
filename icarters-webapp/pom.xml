@@ -6,7 +6,7 @@
 <groupId>com.icarters</groupId>
 <artifactId>icarters-webapp</artifactId>
 <version>1.0</version>
-<packaging>jar</packaging>
+<packaging>war</packaging>
 
 <name>icarters</name>
 <description>Icarters shop web module</description>
@@ -106,6 +106,12 @@
 <build>
     <plugins>
         <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+    </plugin>
+        <!-- <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             <executions>
@@ -115,8 +121,8 @@
                     </goals>
                 </execution>
             </executions>
-        </plugin>
-        <plugin>
+        </plugin> -->
+        <!-- <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
                 <compilerId>groovy-eclipse-compiler</compilerId>
@@ -133,7 +139,7 @@
                     <version>2.3.7-01</version>
                 </dependency>
             </dependencies>
-        </plugin>
+        </plugin> -->
         <plugin>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-eclipse-compiler</artifactId>

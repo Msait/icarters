@@ -4,7 +4,7 @@ case $1 in
  jenkins)
    #docker run --name jen --rm  -p 9090:8080 jenkins
    #docker run --name jen --rm  -v /vagrant/home/provision/jenkins:/var/jenkins_home -p 9090:8080 bondar/jenkins
-   docker run --name jen --rm -p 9090:8080 orchardup/jenkins
+   docker run --name jen --rm -p 9090:8080 bondar/jenkins
  ;;
  tomcat)
    docker run --name tom -it -p 8080:8080 --rm bondar/tomcat
@@ -12,8 +12,7 @@ case $1 in
   ;;
  init)
    docker pull postgres
-   docker pull jenkins
-   # docker build -t bondar/jenkins provision/jenkins
+   docker build -t bondar/jenkins provision/jenkins
    docker build -t bondar/tomcat provision/tomcat
   ;;
 esac
