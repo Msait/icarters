@@ -11,7 +11,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class DatasourceConfig {
-    @Value("${spring.datasource.driverClassName}")
+    @Value("${spring.datasource.driver-class-name}")
     private String databaseDriverClassName;
 
     @Value("${spring.datasource.url}")

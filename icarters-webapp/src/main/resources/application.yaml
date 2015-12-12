@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: icarters
+  profiles:
+    active: development
+  main:
+    web-environment: true
+
+---
+
+spring:
+  profiles: development
+
+  datasource:
+    url: jdbc:postgresql://192.168.99.100:5432/icarters
+    username: postgres
+    password: icarters
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      
+---
+
+spring:
+
+  profiles: test
+
+  jpa:
+    open-in-view: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
