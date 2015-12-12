@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="headerFragment">
+
+</head>
+<body>
+    <header th:fragment="header">
+        <!--LOGIN / LOGOUT-->
+        <div th:replace="fragments/authorization :: ${#authorization.expression('isAuthenticated()')} ? 'authorized' : 'unauthorized'"></div>
+        <!--MENU-->
+        <nav th:replace="fragments/base_layout :: menuFragment">
+            <p>Nav goes here</p>
+        </nav>
+    </header>
+
+    <article th:fragment="content">
+
+        <section>
+            <h2>Section 1</h2>
+            <p>Some texts</p>
+        </section>
+
+        <footer th:fragment="footer">
+            <p>Footer goes here</p>
+        </footer>
+
+    </article>
+
+</body>
+
+</html>

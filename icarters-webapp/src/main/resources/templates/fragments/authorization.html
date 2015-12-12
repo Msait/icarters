@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+<body>
+
+    <div th:fragment="authorized">
+        Hello <span sec:authentication="name">User</span>
+        <a th:href="@{/login?logout}">Logout</a>
+    </div>
+
+    <div th:fragment="unauthorized">
+
+        <form th:action="@{/login}" method="post">
+            <fieldset>
+
+                <div th:if="${param.error}" class="alert alert-error">
+                    Invalid username and password.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success">
+                    You have been logged out.
+                </div>
+
+                <label for="username">Username</label>:
+                <input type="text" id="username" name="username" /> <br />
+                <label for="password">Password</label>:
+                <input type="password" id="password" name="password" /> <br />
+                <input type="submit" value="Log in" />
+
+            </fieldset>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
