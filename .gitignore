@@ -32,4 +32,7 @@
 /provision/jenkins/userContent/**
 /provision/jenkins/war/**
 /provision/jenkins/workspace/**
-data/**
+/data/**
+node_modules
+icarters-webapp/src/main/resources/static/css
+icarters-webapp/src/main/resources/static/js
